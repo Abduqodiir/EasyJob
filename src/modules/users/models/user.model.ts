@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Application } from './application.entity';
-import { Resume } from './resume.entity';
-import { Job } from './job.entity';
+import { Application } from 'src/modules/applications';
+import { Resume } from 'src/modules/resumes'; 
+import { Job } from 'src/modules/jobs';
 
 @Entity('users')
 export class User {

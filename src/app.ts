@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { appConfig } from '@config';
+import { Application, FileModule, Job, Resume, User } from '@modules';
 
 @Module({
   imports: [
@@ -26,9 +27,10 @@ import { appConfig } from '@config';
         database: configService.get<string>('DB_NAME'),
         synchronize: true,
         autoLoadEntities: true,
-        
+        models: [User,Application,Resume,Job]
       }),
     }),
+    FileModule
   ],
   controllers: [],
   providers: [],
