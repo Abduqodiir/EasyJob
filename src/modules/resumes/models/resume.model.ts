@@ -20,6 +20,9 @@ export class Resume {
         endDate: Date;
         description: string;
         isCurrentlyWorking: boolean;
+        location?: string;
+        achievements?: string[];
+        technologies?: string[];
     }[];
 
     @Column('jsonb')
@@ -30,13 +33,22 @@ export class Resume {
         startDate: Date;
         endDate: Date;
         description: string;
+        grade?: string;
+        achievements?: string[];
     }[];
 
-    @Column('simple-array')
-    skills: string[];
+    @Column('jsonb')
+    skills: {
+        category: string;
+        items: string[];
+        level?: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+    }[];
 
-    @Column('simple-array', { nullable: true })
-    languages: string[];
+    @Column('jsonb', { nullable: true })
+    languages: {
+        name: string;
+        level: 'basic' | 'intermediate' | 'fluent' | 'native';
+    }[];
 
     @Column('jsonb', { nullable: true })
     certificates: {
@@ -44,6 +56,8 @@ export class Resume {
         issuer: string;
         date: Date;
         expiryDate?: Date;
+        credentialId?: string;
+        url?: string;
     }[];
 
     @Column('simple-array', { nullable: true })
@@ -66,6 +80,20 @@ export class Resume {
 
     @Column({ default: false })
     isPublic: boolean;
+
+    @Column({ nullable: true })
+    templateId: string;
+
+    @Column({ type: 'jsonb', nullable: true })
+    projects: {
+        name: string;
+        description: string;
+        url?: string;
+        startDate?: Date;
+        endDate?: Date;
+        technologies?: string[];
+        role?: string;
+    }[];
 
     @CreateDateColumn()
     createdAt: Date;

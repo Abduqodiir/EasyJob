@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { User } from 'src/modules/users'; 
 import { Application } from 'src/modules/applications'; 
+import { ExperienceLevel, JobRemoteType, JobType } from 'src/modules/enums';
 
 @Entity('jobs')
 export class Job {
@@ -16,8 +17,12 @@ export class Job {
     @Column()
     location: string;
 
-    @Column({ nullable: true })
-    remoteType: string; // fully-remote, hybrid, on-site
+    @Column({ 
+        type: 'enum',
+        enum: JobRemoteType,
+        nullable: true 
+    })
+    remoteType: JobRemoteType;
 
     @Column()
     salaryFrom: number;
@@ -30,21 +35,24 @@ export class Job {
 
     @Column({
         type: 'enum',
-        enum: ['full-time', 'part-time', 'contract', 'internship', 'temporary']
+        enum: JobType
     })
-    jobType: string;
+    jobType: JobType;
 
     @Column({
         type: 'enum',
-        enum: ['entry', 'mid-level', 'senior', 'lead', 'executive']
+        enum: ExperienceLevel
     })
-    experienceLevel: string;
+    experienceLevel: ExperienceLevel;
 
     @Column('simple-array')
     requiredSkills: string[];
 
-    @Column({ type: 'text', nullable: true })
-    benefits: string;
+    @Column({ type: 'jsonb', nullable: true })
+    benefits: {
+        type: string;
+        description: string;
+    }[];
 
     @Column({ nullable: true })
     deadline: Date;
@@ -57,6 +65,20 @@ export class Job {
 
     @Column({ type: 'simple-array', nullable: true })
     categories: string[];
+
+    @Column({ default: 0 })
+    applicationsCount: number;
+
+    @Column({ type: 'jsonb', nullable: true })
+    requirements: {
+        education?: string[];
+        experience?: string[];
+        skills?: string[];
+        other?: string[];
+    };
+
+    @Column({ nullable: true })
+    department: string;
 
     @CreateDateColumn()
     createdAt: Date;

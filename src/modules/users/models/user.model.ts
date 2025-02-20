@@ -2,6 +2,8 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, Up
 import { Application } from 'src/modules/applications';
 import { Resume } from 'src/modules/resumes'; 
 import { Job } from 'src/modules/jobs';
+import { UserRole } from 'src/modules/enums';
+
 
 @Entity('users')
 export class User {
@@ -29,8 +31,12 @@ export class User {
     @Column({ type: 'text', nullable: true })
     bio: string;
 
-    @Column({ default: false })
-    isEmployer: boolean;
+    @Column({
+        type: 'enum',
+        enum: UserRole,
+        default: UserRole.USER
+    })
+    role: UserRole;
 
     @Column({ nullable: true })
     companyName: string;
