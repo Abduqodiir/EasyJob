@@ -5,6 +5,7 @@ import {
 } from "class-validator";
 import { ExperienceLevel, JobRemoteType, JobType } from "src/modules/enums";
 import { CreateJobRequest } from "../interfaces";
+import { Type } from "class-transformer";
 
 export class RequirementsDto {
     @ApiProperty({ type: [String], example: ["Bachelor's degree in Computer Science or related field"] })
@@ -88,6 +89,7 @@ export class CreateJobDto implements CreateJobRequest {
 
     @ApiProperty({ example: "2025-04-30" })
     @IsOptional()
+    @Type(() => Date)
     @IsDate()
     deadline?: Date;
 
