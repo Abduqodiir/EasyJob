@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { appConfig } from '@config';
-import { Application, FileModule, Job, Resume, User, UserModule } from '@modules';
+import { Application, ApplicationsModule, FileModule, Job, JobModule, Resume, ResumeModule, User, UserModule } from '@modules';
 
 @Module({
   imports: [
@@ -31,7 +31,10 @@ import { Application, FileModule, Job, Resume, User, UserModule } from '@modules
       }),
     }),
     FileModule,
-    UserModule
+    UserModule,
+    JobModule,
+    ApplicationsModule,
+    ResumeModule
   ],
   controllers: [],
   providers: [],
