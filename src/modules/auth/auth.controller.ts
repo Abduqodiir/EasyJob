@@ -7,7 +7,7 @@ import { Roles } from '@decorators';
 import { UserRole } from 'src/modules/enums';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
 
-@ApiTags('Autentifikatsiya')
+@ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) { }
