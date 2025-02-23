@@ -37,7 +37,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-
   await app.listen(configService.get<number>('port'), () => {
     console.log(`Uraaa server ${configService.get<number>('port')} portda ishlamoqda...`);
 });
