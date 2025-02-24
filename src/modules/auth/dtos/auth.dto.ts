@@ -2,22 +2,22 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsString, MinLength, Matches } from 'class-validator';
 
 export class RegisterDto {
-    @ApiProperty({ example: 'Ali', description: 'Foydalanuvchining ismi' })
+    @ApiProperty({ example: 'Abduqodir', description: 'Foydalanuvchining ismi' })
     @IsNotEmpty({ message: "Ism bo'sh bo'lishi mumkin emas" })
     @IsString({ message: "Ism string formatida bo'lishi kerak" })
     firstName: string;
 
-    @ApiProperty({ example: 'Valiyev', description: 'Foydalanuvchining familiyasi' })
+    @ApiProperty({ example: 'Yuldashev', description: 'Foydalanuvchining familiyasi' })
     @IsNotEmpty({ message: "Familiya bo'sh bo'lishi mumkin emas" })
     @IsString({ message: "Familiya string formatida bo'lishi kerak" })
     lastName: string;
 
-    @ApiProperty({ example: 'ali@example.com', description: 'Foydalanuvchining email manzili' })
+    @ApiProperty({ example: 'abduqodir@gmail.com', description: 'Foydalanuvchining email manzili' })
     @IsNotEmpty({ message: "Email bo'sh bo'lishi mumkin emas" })
     @IsEmail({}, { message: "Email formati noto'g'ri" })
     email: string;
 
-    @ApiProperty({ example: 'Ali1234!', description: 'Kuchli parol' })
+    @ApiProperty({ example: 'Abduqodir17!', description: 'Kuchli parol' })
     @IsNotEmpty({ message: "Parol bo'sh bo'lishi mumkin emas" })
     @MinLength(8, { message: "Parol minimum 8 ta belgidan iborat bo'lishi kerak" })
     @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
@@ -25,19 +25,19 @@ export class RegisterDto {
     })
     password: string;
 
-    @ApiProperty({ example: '998901234567', description: 'Telefon raqami' })
+    @ApiProperty({ example: '998770407113', description: 'Telefon raqami' })
     @IsNotEmpty({ message: "Telefon raqami bo'sh bo'lishi mumkin emas" })
     @Matches(/^998[0-9]{9}$/, { message: "Telefon raqami formati noto'g'ri. 998XXXXXXXXX formatida kiriting" })
     phoneNumber: string;
 }
 
 export class LoginDto {
-    @ApiProperty({ example: 'ali@example.com', description: 'Foydalanuvchining email manzili' })
+    @ApiProperty({ example: 'abduqodir@gmail.com', description: 'Foydalanuvchining email manzili' })
     @IsNotEmpty({ message: "Email bo'sh bo'lishi mumkin emas" })
     @IsEmail({}, { message: "Email formati noto'g'ri" })
     email: string;
 
-    @ApiProperty({ example: 'Ali1234!', description: 'Foydalanuvchining paroli' })
+    @ApiProperty({ example: 'Abduqodir17!', description: 'Foydalanuvchining paroli' })
     @IsNotEmpty({ message: "Parol bo'sh bo'lishi mumkin emas" })
     password: string;
 }
@@ -49,7 +49,7 @@ export class RefreshTokenDto {
 }
 
 export class ResetPasswordDto {
-    @ApiProperty({ example: 'Ali1234!', description: 'Yangi kuchli parol' })
+    @ApiProperty({ example: 'Abduqodir17!', description: 'Yangi kuchli parol' })
     @IsNotEmpty({ message: "Yangi parol bo'sh bo'lishi mumkin emas" })
     @MinLength(8, { message: "Parol minimum 8 ta belgidan iborat bo'lishi kerak" })
     @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
