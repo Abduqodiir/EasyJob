@@ -29,8 +29,8 @@ async function bootstrap() {
   app.use(morgan('tiny'))
 
   const config = new DocumentBuilder()
-    .setTitle('Feane restaurant API')
-    .setDescription('The feane API description')
+    .setTitle('EasyJob API')
+    .setDescription('The EasyJob API description')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

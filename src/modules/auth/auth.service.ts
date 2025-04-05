@@ -26,7 +26,6 @@ export class AuthService {
     ) { }
 
     async register(registerDto: RegisterDto): Promise<{ message: string }> {
-        // Check if user already exists
         const existingUser = await this.userRepository.findOne({ where: { email: registerDto.email } });
         if (existingUser) {
             throw new ConflictException('Bunday email bilan foydalanuvchi allaqachon ro\'yxatdan o\'tgan');

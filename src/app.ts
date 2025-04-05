@@ -27,6 +27,7 @@ import { Application, ApplicationsModule, AuthModule, FileModule, Job, JobModule
         database: configService.get<string>('DB_NAME'),
         synchronize: true,
         autoLoadEntities: true,
+        dropSchema: true,
         entities: [User, Application, Resume, Job, Token]
       }),
     }),
